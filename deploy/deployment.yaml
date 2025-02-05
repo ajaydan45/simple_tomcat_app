@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mavenproject
+  labels:
+    app: mavenproject
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mavenproject
+  template:
+    metadata:
+      labels:
+        app: mavenproject
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: nodejs-clone-app
+        image: gunjankhanal/mavenproject:45      
+        ports:
+        - containerPort: 8080
